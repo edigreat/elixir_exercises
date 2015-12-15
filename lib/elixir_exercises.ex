@@ -1,0 +1,2 @@
+defmodule ElixirExercises do
+end
