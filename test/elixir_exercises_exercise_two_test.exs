@@ -26,7 +26,7 @@ defmodule ElixirExercises.ExerciseTwoTest do
 
   end
   
-  test "it should return a word with a prefix",%{tax_rate: tax_rate, orders: orders, result: result } do
+  test "it should return the orders with tax in NC or NC",%{tax_rate: tax_rate, orders: orders, result: result } do
     orders_with_taxes = ElixirExercises.ExerciseTwo.tax_calculate(tax_rate,orders)
     assert result == orders_with_taxes
   end
