@@ -1,4 +1,4 @@
-defmodule ElixirExercisesTest do
+defmodule ElixirExercises.ExerciseOneTest do
   use ExUnit.Case
   test "it should return a function" do
     assert is_function(ElixirExercises.ExerciseOne.prefix("Mrs"))
