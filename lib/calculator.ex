@@ -14,12 +14,12 @@ defmodule ElixirExercises.Calculator do
     send(calculator_pid, { :sub, value})
   end
   defp loop(current_value) do
-    receive do
+    updated_value = receive do
       :value -> current_value
-      { :add , value } -> current_value =  current_value + value
-      { :sub , value } -> current_value =  current_value - value
+      { :add , value } -> current_value + value
+      { :sub , value } -> current_value - value
     end
-    loop(current_value)
+    loop(updated_value)
   end
 
 end
