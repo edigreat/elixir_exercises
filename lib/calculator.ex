@@ -1,4 +1,4 @@
-defmodule ElixirExercises.Calculator do
+defmodule Calculator do
   require Logger
   def start do
     spawn( fn -> loop(0) end )
@@ -6,6 +6,11 @@ defmodule ElixirExercises.Calculator do
 
   def value(calculator_pid) do
     send(calculator_pid, %{ :caller =>  self , :operation =>  :value } )
+    result = receive do
+      current_value -> current_value
+      after 5000 -> { :error, :timeout } 
+    end
+    result 
   end
 
   def add(calculator_pid, value) do
@@ -30,7 +35,6 @@ defmodule ElixirExercises.Calculator do
     updated_value = receive do
       %{ :caller =>  caller , :operation =>  :value }  ->
         send(caller , current_value )
-        IO.puts current_value
         current_value
       { :add , value } -> current_value + value
       { :sub , value } -> current_value - value
